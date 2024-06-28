@@ -41,3 +41,24 @@ public:
         return sum;
     }
 };
+
+
+
+Easier method:
+
+class Solution {
+public:
+    long long maximumImportance(int n, vector<vector<int>>& roads) {
+        vector<int> count(n, 0);
+        for(auto &e : roads)
+            ++count[e[0]], ++count[e[1]];
+        
+        sort(count.begin(), count.end());
+
+        long long ans = 0;
+        for(long long i = n; i >= 1; --i)
+            ans += i*count[i-1];
+        
+        return ans;
+    }
+};
