@@ -31,7 +31,9 @@ public:
                     int startRow = (i / 3) * 3;
                     int startCol = (j / 3) * 3;
                     for (const auto& pair : vec) {
-                        if (pair.first != i && pair.second != j && pair.first >= startRow && pair.first < startRow + 3 && pair.second >= startCol && pair.second < startCol + 3) {
+                        if (pair.first != i && pair.second != j &&
+                            pair.first >= startRow &&  pair.first < startRow + 3 &&
+                            pair.second >= startCol &&  pair.second < startCol + 3) {
                             return false; // Duplicate found in the same 3x3
                                           // sub-grid
                         }
