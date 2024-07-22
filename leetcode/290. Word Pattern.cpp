@@ -23,3 +23,47 @@ public:
         return (i==pattern.size() && j-1==s.size())? true: false;
     }
 };
+
+//OR
+class Solution {
+    public:
+        bool wordPattern(string pattern, string s) {
+            unordered_map<char, string> m1;
+            unordered_map<string, char> m2;
+            int n=pattern.size();
+            vector<string>words;
+            int j=0;
+            s=s+' ';
+            string word="";
+            while(j<s.size())
+            {
+                if(s[j]==' ')
+                {
+                    words.push_back(word);
+                    word="";
+                }
+                else
+                    word=word+s[j];
+                j++;
+            }
+            if(n!=words.size())
+                return false;
+            for(int i=0;i<n;i++)
+            {
+                char c=pattern[i];
+                string st=words[i];
+                if(m1.count(c)==0&&m2.count(st)==0)
+                {
+                    m1[c]=st;
+                    m2[st]=c;
+                }
+                else
+                {
+                    if(m1[c]!=st||m2[st]!=c)
+                        return false;
+                }
+
+            }
+            return true;
+        }
+    };
