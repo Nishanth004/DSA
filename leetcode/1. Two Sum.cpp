@@ -8,7 +8,6 @@ public:
             if(map.count(comp))
                 return {map[comp],i};
             map[nums[i]]=i;
-            
         }
         return {};
     }
