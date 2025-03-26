@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int strStr(string hay, string needle) {
+        int i = 0 , j = 0, ans = -1;
+        while(i<needle.size() && j<hay.size())
+        {
+            ans = j;
+            int k =j;
+            while(needle[i] == hay[k] && i<needle.size() && k<hay.size())
+            {
+                i++;
+                k++;
+            }
+            if(i == needle.size())
+                return ans;
+            else
+            {
+                i = 0;
+                j++;
+            }
+            
+        }
+        return -1;
+    }
+};
