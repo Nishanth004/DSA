@@ -1,0 +1,43 @@
+class Solution {
+public:
+    string simplifyPath(string path) {
+        stack<string>st;
+        string word,res;
+        int i = 0, n = path.size();
+        while(i<n)
+        {
+            if(path[i] == '/')
+            {
+                i++;
+                continue;
+            }
+            word = "";
+            while(i < n && path[i] != '/')
+            {    
+                word += path[i];
+                i++;
+            }
+            if(word == "" || word == ".")
+                continue;
+            else if(word == "..")
+            {
+                i++;
+                if(!st.empty())
+                    st.pop();
+                continue;
+            }
+            else
+            {    
+                i++;
+                st.push(word);
+            }
+
+        }
+        while(!st.empty())
+        {
+            res = "/" + st.top() + res;
+            st.pop();
+        }
+        return (res.empty())? "/" : res;
+    }
+};
